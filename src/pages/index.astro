@@ -1,16 +1,62 @@
 ---
+import '../styles/global.css';
+import '@fontsource-variable/nunito/wght-italic.css';
+import '@fontsource/great-vibes';
 
+import Clock from '../components/clock.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang='en'>
+  <head>
+    <title>Baby Shower Helena</title>
+    <meta charset='utf-8' />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+  </head>
+  <body class='w-screen h-screen flex items-center justify-center bg-gray-50 font-body'>
+    <div class='w-full h-full flex flex-col justify-center px-4 lg:px-24'>
+      <h2 class='text-center text-xl/10 font-semibold text-indigo-600 font-body'>
+        Baby Shower de
+      </h2>
+      <p
+        class='mx-auto w-full mt-2 max-w-lg text-center text-5xl tracking-tight text-balance text-gray-950 sm:text-5xl font-title'>
+        Helena
+      </p>
+      <div class='mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2'>
+        <div class='bg-white rounded-xl shadow-lg lg:row-span-2'>
+          Lista de regalos
+        </div>
+        <div class='max-lg:row-start-1 bg-white rounded-xl shadow-lg py-4 px-5'>
+          <Clock />
+        </div>
+        <div
+          class='max-lg:row-start-3 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center bg-white rounded-xl shadow-lg py-4 px-5'>
+          <h3 class='text-indigo-600 text-xl font-bold font-title'>Dirección</h3>
+          <span class='text-md mx-3 text-center font-body'
+            >Cra. 3 #1-76 Florida de la sierra Barrio el Recreo
+          </span>
+          <iframe
+            src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
+            class='w-full h-full rounded-xl'
+            style='border: 0'
+            allowfullscreen=''
+            loading='lazy'
+            referrerpolicy='no-referrer-when-downgrade'
+          ></iframe>
+        </div>
+        <div class='lg:row-span-2'>Confirmar asistencia</div>
+      </div>
+    </div>
+  </body>
 </html>

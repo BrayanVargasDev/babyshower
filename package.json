@@ -9,6 +9,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.8.0"
+    "@fontsource-variable/nunito": "^5.2.5",
+    "@fontsource/great-vibes": "^5.2.5",
+    "@fontsource/sacramento": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.8.0",
+    "firebase": "^11.8.1",
+    "firebase-admin": "^13.4.0",
+    "tailwindcss": "^4.1.7"
   }
 }

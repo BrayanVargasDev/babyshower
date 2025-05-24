@@ -1,0 +1,98 @@
+---
+// Fecha objetivo: 6 de julio de 2025 a las 4:00 PM
+const targetDate = new Date('2025-07-06T16:00:00').getTime();
+---
+
+<div class='flex flex-row items-center justify-center gap-3 w-full'>
+  <div
+    class='flex flex-col items-center justify-center w-1/3 border-r-2 border-indigo-600 pr-3'>
+    <span class='text-center text-lg font-body'>Domingo</span>
+    <span class='text-center text-lg font-body'>04:00pm</span>
+  </div>
+  <div class='flex flex-col items-center justify-center w-1/3'>
+    <span class='font-extrabold text-indigo-600 text-6xl font-title'>06</span>
+  </div>
+  <div
+    class='flex flex-col items-center justify-center w-1/3 border-l-2 border-indigo-600 pl-3'>
+    <span class='text-center text-lg font-body'>Julio</span>
+    <span class='text-center text-lg font-body'>2025</span>
+  </div>
+</div>
+<h3
+  class='w-full mt-8 text-center text-xl font-bold text-indigo-600 font-title'>
+  ¿Cuánto falta?
+</h3>
+
+<div class='container'>
+  <div class='tdias'>
+    <span id='dias-count' class='block text-4xl font-bold text-indigo-600 font-body'>--</span>
+  </div>
+  <div class='thoras'>
+    <span id='horas-count' class='block text-4xl font-bold text-indigo-600 font-body'>--</span>
+  </div>
+  <div class='tminutos'>
+    <span id='minutos-count' class='block text-4xl font-bold text-indigo-600 font-body'>--</span>
+  </div>
+  <div class='tsegundos'>
+    <span id='segundos-count' class='block text-4xl font-bold text-indigo-600 font-body'>--</span>
+  </div>
+  <div class='dias'>
+    <span class='block font-medium font-body'>Días</span>
+  </div>
+  <div class='horas'>
+    <span class='block font-medium font-body'>Horas</span>
+  </div>
+  <div class='minutos'>
+    <span class='block font-medium font-body'>Min</span>
+  </div>
+  <div class='segundos'>
+    <span class='block font-medium font-body'>Seg</span>
+  </div>
+</div>
+
+<script>
+  // Fecha objetivo: 6 de julio de 2025 a las 4:00 PM
+  const targetDate = new Date('2025-07-06T16:00:00').getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = targetDate - now;
+
+    const diasElement = document.getElementById('dias-count');
+    const horasElement = document.getElementById('horas-count');
+    const minutosElement = document.getElementById('minutos-count');
+    const segundosElement = document.getElementById('segundos-count');
+
+    // Si ya pasó la fecha objetivo
+    if (timeLeft < 0) {
+      if (diasElement) diasElement.textContent = '00';
+      if (horasElement) horasElement.textContent = '00';
+      if (minutosElement) minutosElement.textContent = '00';
+      if (segundosElement) segundosElement.textContent = '00';
+      return;
+    }
+
+    // Calcular días, horas, minutos y segundos
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Actualizar los elementos del DOM
+    if (diasElement) diasElement.textContent = days.toString().padStart(2, '0');
+    if (horasElement) horasElement.textContent = hours.toString().padStart(2, '0');
+    if (minutosElement) minutosElement.textContent = minutes.toString().padStart(2, '0');
+    if (segundosElement) segundosElement.textContent = seconds.toString().padStart(2, '0');
+  }
+
+  // Actualizar inmediatamente y luego cada segundo
+  updateCountdown();
+  const countdownInterval = setInterval(updateCountdown, 1000);
+
+  // Limpiar el intervalo cuando el componente se destruya
+  document.addEventListener('astro:page-load', () => {
+    updateCountdown();
+    if (countdownInterval) clearInterval(countdownInterval);
+    setInterval(updateCountdown, 1000);
+  });
+</script>
