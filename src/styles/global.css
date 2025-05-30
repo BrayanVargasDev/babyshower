@@ -5,6 +5,24 @@
   --font-body: 'Nunito Variable', sans-serif;
 }
 
+@theme {
+  --font-sans: var(--font-body);
+  --font-title: var(--font-title);
+
+  --color-primary: #2e3c0a;
+
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+}
+
 * {
   box-sizing: border-box;
 }

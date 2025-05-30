@@ -4,6 +4,7 @@ import '@fontsource-variable/nunito/wght-italic.css';
 import '@fontsource/great-vibes';
 
 import Clock from '../components/clock.astro';
+import ArticlesList from '../components/articles-list.astro';
 ---
 
 <html lang='en'>
@@ -17,45 +18,103 @@ import Clock from '../components/clock.astro';
     />
     <meta
       name='viewport'
-      content='width=device-width'
+      content='width=device-width, initial-scale=1.0'
     />
     <meta
       name='generator'
       content={Astro.generator}
     />
   </head>
-  <body class='w-screen h-screen flex items-center justify-center bg-gray-50 font-body'>
-    <div class='w-full h-full flex flex-col justify-center px-4 lg:px-24'>
-      <h2 class='text-center text-xl/10 font-semibold text-indigo-600 font-body'>
-        Baby Shower de
-      </h2>
-      <p
-        class='mx-auto w-full mt-2 max-w-lg text-center text-5xl tracking-tight text-balance text-gray-950 sm:text-5xl font-title'>
-        Helena
-      </p>
-      <div class='mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2'>
-        <div class='bg-white rounded-xl shadow-lg lg:row-span-2'>
-          Lista de regalos
-        </div>
-        <div class='max-lg:row-start-1 bg-white rounded-xl shadow-lg py-4 px-5'>
-          <Clock />
-        </div>
-        <div
-          class='max-lg:row-start-3 lg:col-start-2 lg:row-start-2 flex flex-col items-center justify-center bg-white rounded-xl shadow-lg py-4 px-5'>
-          <h3 class='text-indigo-600 text-xl font-bold font-title'>Dirección</h3>
-          <span class='text-md mx-3 text-center font-body'
-            >Cra. 3 #1-76 Florida de la sierra Barrio el Recreo
-          </span>
-          <iframe
-            src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
-            class='w-full h-full rounded-xl'
-            style='border: 0'
-            allowfullscreen=''
-            loading='lazy'
-            referrerpolicy='no-referrer-when-downgrade'
-          ></iframe>
-        </div>
-        <div class='lg:row-span-2'>Confirmar asistencia</div>
+  <body
+    class='w-full min-h-screen flex items-center justify-center bg-[url(public/background.png)] bg-cover bg-center bg-no-repeat p-2 sm:p-4 lg:px-48'>
+    <div
+      class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-auto sm:grid-rows-[auto_1fr_1fr] gap-3 sm:gap-4 w-full max-w-7xl'>
+      <!-- Header - Full width on all devices -->
+      <div class='col-span-1 sm:col-span-2 lg:col-span-3 order-1'>
+        <h2
+          class='text-center text-base sm:text-lg md:text-2xl font-semibold text-gray-950 font-body drop-shadow-md'>
+          Estas invitado a un evento muy especial
+        </h2>
+        <p
+          class='mx-auto text-primary w-full mt-2 text-center tracking-tight text-balance font-title drop-shadow-lg leading-tight text-shadow-[0_0_2px_#000] text-[clamp(1.5rem,6vw,7rem)]'>
+          Baby Shower de Helena
+        </p>
+      </div>
+
+      <!-- Clock - First on mobile, original position on larger screens -->
+      <div
+        class='bg-white/15 backdrop-blur-xl border border-white/25 rounded-xl shadow-xl p-3 sm:p-4 lg:p-5 min-h-[200px] sm:min-h-[250px] lg:min-h-[300px] order-2 sm:order-4 sm:row-start-2 flex flex-col items-center justify-center'>
+        <Clock />
+      </div>
+
+      <!-- Map - Second on mobile, original position on larger screens -->
+      <div
+        class='flex flex-col items-center justify-center bg-white/15 backdrop-blur-xl border border-white/25 rounded-xl shadow-xl p-3 sm:p-4 lg:p-5 min-h-[250px] sm:min-h-full order-3 sm:order-5 sm:col-start-2 sm:row-start-3 lg:col-start-2 lg:row-start-3'>
+        <h3
+          class='text-primary font-title drop-shadow-md text-[clamp(1rem,3vw,2.25rem)] text-shadow-[0_0_2px_#000]'>
+          Dirección
+        </h3>
+        <span
+          class='text-xl mx-3 text-center font-body text-gray-800 drop-shadow-md mb-3'
+          >Cra. 3 #1-76 Florida de la sierra Barrio el Recreo
+        </span>
+        <iframe
+          src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
+          class='w-full flex-1 rounded-xl shadow-inner min-h-[150px] sm:min-h-[180px]'
+          style='border: 0'
+          allowfullscreen=''
+          loading='lazy'
+          referrerpolicy='no-referrer-when-downgrade'
+        ></iframe>
+      </div>
+
+      <!-- Gift List - Third on mobile, original position on larger screens -->
+      <div
+        class='bg-white/5 backdrop-blur-lg border border-white/25 rounded-xl shadow-xl flex flex-col items-center justify-center p-4 sm:p-6 min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] order-4 sm:order-2 sm:row-span-2 sm:row-start-2 lg:row-span-2 lg:row-start-2'>
+        <h3
+          class='text-primary font-[500] font-title mb-3 sm:mb-4 text-center drop-shadow-md text-[clamp(1.25rem,4.5vw,4rem)] text-shadow-[0_0_2px_#000]'>
+          Lista de Regalos
+        </h3>
+        <p
+          class='text-gray-800 text-center mb-3 sm:mb-4 lg:mb-6 font-body leading-relaxed drop-shadow-md text-[clamp(0.875rem,2.8vw,1.5rem)] font-[500]'>
+          Tu presencia es el regalo más especial que podríamos recibir. Si
+          deseas obsequiar algo para nuestra pequeña Helena, hemos preparado una
+          lista con mucho cariño.
+        </p>
+        <p
+          class='text-gray-700 text-center mb-3 sm:mb-4 lg:mb-6 font-body italic drop-shadow-md text-[clamp(0.75rem,2.2vw,1.25rem)]'>
+          ¡Gracias por ser parte de este momento tan especial en nuestras vidas!
+        </p>
+        <button
+          id='openGiftListModal'
+          class='bg-[#A9C1C3] text-primary font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 font-body cursor-pointer hover:scale-110 animate-wiggle shadow-[0_0_2px_#000] text-[clamp(0.875rem,2.5vw,1rem)]'>
+          ¡Quiero regalar algo!
+        </button>
+      </div>
+
+      <ArticlesList />
+
+      <!-- RSVP - Fourth on mobile, original position on larger screens -->
+      <div
+        class='bg-white/15 backdrop-blur-xl border border-white/25 rounded-xl shadow-xl flex flex-col items-center justify-center p-4 sm:p-6 min-h-[300px] sm:min-h-[350px] lg:min-h-[400px] order-5 sm:order-3 sm:row-span-2 sm:col-start-1 sm:row-start-3 lg:col-start-3 lg:row-start-2 lg:row-span-2'>
+        <h3
+          class='text-primary font-[500] font-title mb-3 sm:mb-4 text-center drop-shadow-md text-[clamp(1.25rem,4.5vw,4rem)] text-shadow-[0_0_2px_#000]'>
+          Confirma tu Asistencia
+        </h3>
+        <p
+          class='text-gray-800 text-center mb-3 sm:mb-4 font-body leading-relaxed drop-shadow-md text-[clamp(0.875rem,2.8vw,1.5rem)] font-[500]'>
+          ¡Tu presencia hará este momento aún más especial! Ayúdanos a preparar
+          todo con amor confirmando si nos acompañarás.
+        </p>
+        <p
+          class='text-gray-700 text-center mb-3 sm:mb-4 lg:mb-6 font-body italic drop-shadow-md text-[clamp(0.75rem,2.2vw,1.25rem)]'>
+          Cada sonrisa cuenta en la bienvenida de Helena
+        </p>
+        <button
+          class='bg-[#A9C1C3] text-primary font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 font-body cursor-pointer hover:scale-110 shadow-[0_0_2px_#000] text-[clamp(0.875rem,2.5vw,1rem)]'
+          '>
+          ¡Confirmo mi asistencia!
+        </button>
       </div>
     </div>
   </body>
