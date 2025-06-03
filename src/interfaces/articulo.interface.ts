@@ -1,4 +1,5 @@
 export interface Articulo {
+  id?: string; // ID único del artículo
   nombre: string;
   totalDisponible: number;
   categoria: string;
