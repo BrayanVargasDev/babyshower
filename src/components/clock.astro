@@ -4,30 +4,34 @@ const targetDate = new Date('2025-07-06T16:00:00').getTime();
 ---
 
 <h3
-  class='text-primary text-center font-title drop-shadow-md text-[clamp(1rem,3vw,2.25rem)] text-shadow-[0_0_2px_#000] mb-2'>
+  class='text-primary font-title mb-2 text-center text-[clamp(1rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
+>
   ¿Cuándo?
 </h3>
 
-<div class='flex flex-row items-center justify-center gap-3 w-full mb-2'>
+<div class='mb-2 flex w-full flex-row items-center justify-center gap-3'>
   <div
-    class='flex flex-col items-center justify-center w-1/3 border-r-2 border-primary pr-3'>
-    <span class='text-center text-xl font-body'>Domingo</span>
-    <span class='text-center text-xl font-body'>04:00pm</span>
+    class='border-primary flex w-1/3 flex-col items-center justify-center border-r-2 pr-3'
+  >
+    <span class='font-body text-center text-xl'>Domingo</span>
+    <span class='font-body text-center text-xl'>04:00pm</span>
   </div>
-  <div class='flex flex-col items-center justify-center w-1/3'>
+  <div class='flex w-1/3 flex-col items-center justify-center'>
     <span
-      class='font-extrabold text-primary text-6xl font-title text-shadow-[0_0_2px_#000]'
+      class='text-primary font-title text-6xl font-extrabold text-shadow-[0_0_2px_#000]'
       >06</span
     >
   </div>
   <div
-    class='flex flex-col items-center justify-center w-1/3 border-l-2 border-primary pl-3'>
-    <span class='text-center text-xl font-body'>Julio</span>
-    <span class='text-center text-xl font-body'>2025</span>
+    class='border-primary flex w-1/3 flex-col items-center justify-center border-l-2 pl-3'
+  >
+    <span class='font-body text-center text-xl'>Julio</span>
+    <span class='font-body text-center text-xl'>2025</span>
   </div>
 </div>
 <h3
-  class='text-primary text-center font-title drop-shadow-md text-[clamp(1rem,3vw,2.25rem)] text-shadow-[0_0_2px_#000] mt-4'>
+  class='text-primary font-title mt-4 text-center text-[clamp(1rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
+>
   ¿Cuánto falta?
 </h3>
 
@@ -35,47 +39,46 @@ const targetDate = new Date('2025-07-06T16:00:00').getTime();
   <div class='tdias'>
     <span
       id='dias-count'
-      class='block text-4xl font-bold text-primary text-shadow-[0_0_2px_#000] font-body'
+      class='text-primary font-body block text-4xl font-bold text-shadow-[0_0_2px_#000]'
       >--</span
     >
   </div>
   <div class='thoras'>
     <span
       id='horas-count'
-      class='block text-4xl font-bold text-primary text-shadow-[0_0_2px_#000] font-body'
+      class='text-primary font-body block text-4xl font-bold text-shadow-[0_0_2px_#000]'
       >--</span
     >
   </div>
   <div class='tminutos'>
     <span
       id='minutos-count'
-      class='block text-4xl font-bold text-primary text-shadow-[0_0_2px_#000] font-body'
+      class='text-primary font-body block text-4xl font-bold text-shadow-[0_0_2px_#000]'
       >--</span
     >
   </div>
   <div class='tsegundos'>
     <span
       id='segundos-count'
-      class='block text-4xl font-bold text-primary text-shadow-[0_0_2px_#000] font-body'
+      class='text-primary font-body block text-4xl font-bold text-shadow-[0_0_2px_#000]'
       >--</span
     >
   </div>
   <div class='dias'>
-    <span class='block font-medium text-lg'>Días</span>
+    <span class='block text-lg font-medium'>Días</span>
   </div>
   <div class='horas'>
-    <span class='block font-medium text-lg'>Horas</span>
+    <span class='block text-lg font-medium'>Horas</span>
   </div>
   <div class='minutos'>
-    <span class='block font-medium text-lg'>Min</span>
+    <span class='block text-lg font-medium'>Min</span>
   </div>
   <div class='segundos'>
-    <span class='block font-medium text-lg'>Seg</span>
+    <span class='block text-lg font-medium'>Seg</span>
   </div>
 </div>
 
 <script>
-  // Fecha objetivo: 6 de julio de 2025 a las 4:00 PM
   const targetDate = new Date('2025-07-06T16:00:00').getTime();
 
   function updateCountdown() {
@@ -87,7 +90,6 @@ const targetDate = new Date('2025-07-06T16:00:00').getTime();
     const minutosElement = document.getElementById('minutos-count');
     const segundosElement = document.getElementById('segundos-count');
 
-    // Si ya pasó la fecha objetivo
     if (timeLeft < 0) {
       if (diasElement) diasElement.textContent = '00';
       if (horasElement) horasElement.textContent = '00';
@@ -96,15 +98,13 @@ const targetDate = new Date('2025-07-06T16:00:00').getTime();
       return;
     }
 
-    // Calcular días, horas, minutos y segundos
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    // Actualizar los elementos del DOM
     if (diasElement) diasElement.textContent = days.toString().padStart(2, '0');
     if (horasElement)
       horasElement.textContent = hours.toString().padStart(2, '0');
@@ -114,11 +114,9 @@ const targetDate = new Date('2025-07-06T16:00:00').getTime();
       segundosElement.textContent = seconds.toString().padStart(2, '0');
   }
 
-  // Actualizar inmediatamente y luego cada segundo
   updateCountdown();
   const countdownInterval = setInterval(updateCountdown, 1000);
 
-  // Limpiar el intervalo cuando el componente se destruya
   document.addEventListener('astro:page-load', () => {
     updateCountdown();
     if (countdownInterval) clearInterval(countdownInterval);

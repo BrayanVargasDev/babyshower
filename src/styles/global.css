@@ -1,8 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 :root {
-  --font-title: 'Great Vibes', cursive;
-  --font-body: 'Nunito Variable', sans-serif;
+  --font-title: "Great Vibes", cursive;
+  --font-body: "Nunito Variable", sans-serif;
 }
 
 @theme {
@@ -36,8 +36,8 @@
   grid-auto-flow: row;
   place-items: center;
   grid-template-areas:
-    'tdias thoras tminutos tsegundos'
-    'dias horas minutos segundos';
+    "tdias thoras tminutos tsegundos"
+    "dias horas minutos segundos";
 }
 
 .dias {
