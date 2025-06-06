@@ -1,0 +1,100 @@
+---
+// Información de ubicación por defecto
+const defaultLocation = {
+  address: 'Cra. 3 #1-76 Florida de la sierra Barrio el Recreo',
+  iframe: `<iframe
+    src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
+    class='min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]'
+    style='border: 0'
+    title='Mapa de la ubicación del Baby Shower de Helena'
+    allowfullscreen=''
+    loading='lazy'
+    referrerpolicy='no-referrer-when-downgrade'></iframe>`,
+};
+
+// Información de ubicación alternativa
+const alternativeLocation = {
+  address: 'Carrera 13 # 10-07 (Cerca a Funerario Divino Niño) Lebrija',
+  iframe: `<iframe
+    src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d281.09650390105287!2d-73.22076828949825!3d7.113574725275955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1749227220617!5m2!1ses!2sco'
+    class='min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]'
+    style='border:0;'
+    title='Mapa de la ubicación del Baby Shower de Helena'
+    allowfullscreen=''
+    loading='lazy'
+    referrerpolicy='no-referrer-when-downgrade'></iframe>`,
+};
+---
+
+<h3
+  class='text-primary font-title text-[clamp(2.5rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
+>
+  Dirección
+</h3>
+<span
+  class='font-body mx-3 mb-3 text-center text-xl text-gray-800 drop-shadow-md'
+  id='location-address'
+>
+  {defaultLocation.address}
+</span>
+<div id='map-container' set:html={defaultLocation.iframe} />
+
+<script>
+  const defaultLocation = {
+    address: 'Cra. 3 #1-76 Florida de la sierra Barrio el Recreo',
+    iframe: `<iframe
+      src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
+      class='min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]'
+      style='border: 0'
+      title='Mapa de la ubicación del Baby Shower de Helena'
+      allowfullscreen=''
+      loading='lazy'
+      referrerpolicy='no-referrer-when-downgrade'></iframe>`,
+  };
+
+  const alternativeLocation = {
+    address: 'Carrera 13 # 10-07 (Cerca a Funerario Divino Niño) Lebrija',
+    iframe: `<iframe
+      src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d706.3914681135673!2d-73.22075285223589!3d7.113596690265298!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683d068a375557%3A0xbfe4263258b471ff!2sConstrucivil%20C.J!5e0!3m2!1ses!2sco!4v1749227805591!5m2!1ses!2sco'
+      class='min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]'
+      style='border:0;'
+      title='Mapa de la ubicación del Baby Shower de Helena'
+      allowfullscreen=''
+      loading='lazy'
+      referrerpolicy='no-referrer-when-downgrade'></iframe>`,
+  };
+
+  // Función para obtener parámetros de la URL
+  function getUrlParameter(name: string): string | null {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Función para actualizar la información de ubicación
+  function updateLocationInfo(isAlternative: boolean) {
+    const addressElement = document.getElementById('location-address');
+    const mapContainer = document.getElementById('map-container');
+
+    const location = isAlternative ? alternativeLocation : defaultLocation;
+
+    if (addressElement) {
+      addressElement.textContent = location.address;
+    }
+
+    if (mapContainer) {
+      mapContainer.innerHTML = location.iframe;
+    }
+  }
+
+  // Determinar qué ubicación usar
+  const hasSpecialCode = getUrlParameter('IZgeTl') !== null;
+
+  // Actualizar la información de ubicación
+  updateLocationInfo(hasSpecialCode);
+
+  // Manejar cambios de página en Astro
+  document.addEventListener('astro:page-load', () => {
+    const hasSpecialCode = getUrlParameter('IZgeTl') !== null;
+    updateLocationInfo(hasSpecialCode);
+  });
+</script>
