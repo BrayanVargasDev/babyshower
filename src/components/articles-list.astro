@@ -6,7 +6,7 @@ const { data, error } = await supabase
   .from('articulos')
   .select('*')
   .neq('totalDisponible', 0)
-  .order('totalDisponible', { ascending: false });
+  .order('categoria', { ascending: true });
 ---
 
 <!-- Modal -->
