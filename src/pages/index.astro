@@ -1,85 +1,85 @@
 ---
-import "../styles/global.css";
-import "@fontsource-variable/nunito/wght-italic.css";
-import "@fontsource/great-vibes";
+import '../styles/global.css';
+import '@fontsource-variable/nunito/wght-italic.css';
+import '@fontsource/great-vibes';
 
-import Clock from "../components/clock.astro";
-import ArticlesList from "../components/articles-list.astro";
+import Clock from '../components/clock.astro';
+import ArticlesList from '../components/articles-list.astro';
 ---
 
-<html lang="en">
+<html lang='en'>
   <head>
     <title>Baby Shower Helena - Invitación Especial</title>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='utf-8' />
+    <link rel='apple-touch-icon' sizes='180x180' href='apple-touch-icon.png' />
+    <link rel='icon' type='image/png' sizes='32x32' href='favicon-32x32.png' />
+    <link rel='icon' type='image/png' sizes='16x16' href='favicon-16x16.png' />
+    <link rel='manifest' href='site.webmanifest' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name='generator' content={Astro.generator} />
 
     <!-- SEO Meta Tags -->
     <meta
-      name="description"
-      content="Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa. ¡Tu presencia hará este momento aún más especial!"
+      name='description'
+      content='Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa. ¡Tu presencia hará este momento aún más especial!'
     />
     <meta
-      name="keywords"
-      content="baby shower, Helena, invitación, celebración, bebé, evento especial"
+      name='keywords'
+      content='baby shower, Helena, invitación, celebración, bebé, evento especial'
     />
-    <meta name="author" content="Familia de Helena" />
-    <meta name="robots" content="index, follow" />
+    <meta name='author' content='Familia de Helena' />
+    <meta name='robots' content='index, follow' />
 
     <!-- Open Graph Meta Tags (Facebook, WhatsApp, etc.) -->
-    <meta property="og:type" content="website" />
+    <meta property='og:type' content='website' />
     <meta
-      property="og:title"
-      content="Baby Shower Helena - Invitación Especial"
+      property='og:title'
+      content='Baby Shower Helena - Invitación Especial'
     />
     <meta
-      property="og:description"
-      content="Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa. ¡Tu presencia hará este momento aún más especial!"
+      property='og:description'
+      content='Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa. ¡Tu presencia hará este momento aún más especial!'
     />
-    <meta property="og:url" content="https://babyshower-helena.netlify.app/" />
-    <meta property="og:site_name" content="Baby Shower Helena" />
+    <meta property='og:url' content='https://babyshower-helena.netlify.app/' />
+    <meta property='og:site_name' content='Baby Shower Helena' />
     <meta
-      property="og:image"
-      content="https://babyshower-helena.netlify.app/background.png"
+      property='og:image'
+      content='https://babyshower-helena.netlify.app/background.png'
     />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
     <meta
-      property="og:image:alt"
-      content="Baby Shower Helena - Invitación especial para celebrar la llegada de nuestra pequeña princesa"
+      property='og:image:alt'
+      content='Baby Shower Helena - Invitación especial para celebrar la llegada de nuestra pequeña princesa'
     />
-    <meta property="og:locale" content="es_ES" />
+    <meta property='og:locale' content='es_ES' />
 
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name='twitter:card' content='summary_large_image' />
     <meta
-      name="twitter:title"
-      content="Baby Shower Helena - Invitación Especial"
+      name='twitter:title'
+      content='Baby Shower Helena - Invitación Especial'
     />
     <meta
-      name="twitter:description"
-      content="Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa."
+      name='twitter:description'
+      content='Estás invitado al Baby Shower de Helena. Un evento muy especial para celebrar la llegada de nuestra pequeña princesa.'
     />
     <meta
-      name="twitter:image"
-      content="https://babyshower-helena.netlify.app/background.png"
+      name='twitter:image'
+      content='https://babyshower-helena.netlify.app/background.png'
     />
     <meta
-      name="twitter:image:alt"
-      content="Baby Shower Helena - Invitación especial"
+      name='twitter:image:alt'
+      content='Baby Shower Helena - Invitación especial'
     />
 
     <!-- Additional Meta Tags -->
-    <meta name="theme-color" content="#A9C1C3" />
-    <meta name="msapplication-TileColor" content="#A9C1C3" />
-    <link rel="canonical" href="https://babyshower-helena.netlify.app/" />
+    <meta name='theme-color' content='#A9C1C3' />
+    <meta name='msapplication-TileColor' content='#A9C1C3' />
+    <link rel='canonical' href='https://babyshower-helena.netlify.app/' />
 
     <!-- Structured Data for Rich Snippets -->
-    <script type="application/ld+json">
+    <script type='application/ld+json'>
       {
         "@context": "https://schema.org",
         "@type": "Event",
@@ -106,20 +106,20 @@ import ArticlesList from "../components/articles-list.astro";
     </script>
   </head>
   <body
-    class="flex w-full items-center justify-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat p-2 sm:p-5 lg:px-24 xl:px-32"
+    class='flex w-full items-center justify-center bg-[url(background.png)] bg-cover bg-center bg-no-repeat p-2 sm:p-5 lg:px-24 xl:px-32'
   >
     <div
-      class="grid-rows-auto grid w-full max-w-7xl grid-cols-1 gap-3 sm:grid-cols-2 sm:grid-rows-[auto_1fr_1fr] sm:gap-4 lg:grid-cols-3"
+      class='grid w-full max-w-7xl grid-cols-1 grid-rows-auto gap-3 sm:grid-cols-2 sm:grid-rows-[auto_1fr_1fr] lg:grid-rows-[auto_1fr_1fr] sm:gap-4 lg:grid-cols-3'
     >
       <!-- Header - Full width on all devices -->
-      <div class="order-1 col-span-1 sm:col-span-2 lg:col-span-3">
+      <div class='order-1 col-span-1 sm:col-span-2 lg:col-span-3 row-start-1 row-end-2 col-start-1'>
         <h2
-          class="font-body text-center text-base font-semibold text-gray-950 drop-shadow-md sm:text-lg md:text-2xl"
+          class='font-body text-center text-base font-semibold text-gray-950 drop-shadow-md sm:text-lg md:text-2xl'
         >
           Estas invitado a un evento muy especial
         </h2>
         <p
-          class="text-primary font-title mx-auto mt-2 h-[7.5rem] w-full text-center text-[clamp(1.5rem,6vw,7rem)] leading-tight tracking-tight text-balance drop-shadow-lg text-shadow-[0_0_2px_#000]"
+          class='text-primary font-title mx-auto mt-2 h-[7.5rem] w-full text-center text-[clamp(3.25rem,6vw,7rem)] leading-tight tracking-tight text-balance drop-shadow-lg text-shadow-[0_0_2px_#000]'
         >
           Baby Shower de Helena
         </p>
@@ -127,58 +127,58 @@ import ArticlesList from "../components/articles-list.astro";
 
       <!-- Clock - First on mobile, original position on larger screens -->
       <div
-        class="order-2 flex min-h-[200px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-3 shadow-xl backdrop-blur-xl sm:order-4 sm:row-start-2 sm:min-h-[250px] sm:p-4 lg:min-h-[300px] lg:p-5"
+        class='order-2 flex min-h-[200px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-3 shadow-xl backdrop-blur-xl lg:order-4 sm:row-start-2 sm:row-end-3 sm:col-start-1 sm:col-end-2 sm:min-h-[250px] sm:p-4 lg:min-h-[300px] lg:p-5 lg:col-start-2'
       >
         <Clock />
       </div>
 
       <!-- Map - Second on mobile, original position on larger screens -->
       <div
-        class="order-3 flex min-h-[250px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-3 shadow-xl backdrop-blur-xl sm:order-5 sm:col-start-2 sm:row-start-3 sm:min-h-full sm:p-4 lg:col-start-2 lg:row-start-3 lg:p-5"
+        class='order-3 flex min-h-[250px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-3 shadow-xl backdrop-blur-xl lg:order-5 sm:col-start-2 sm:row-start-2 sm:min-h-full sm:p-4 lg:col-start-2 lg:row-start-3 lg:p-5'
       >
         <h3
-          class="text-primary font-title text-[clamp(1rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]"
+          class='text-primary font-title text-[clamp(2.5rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
         >
           Dirección
         </h3>
         <span
-          class="font-body mx-3 mb-3 text-center text-xl text-gray-800 drop-shadow-md"
+          class='font-body mx-3 mb-3 text-center text-xl text-gray-800 drop-shadow-md'
           >Cra. 3 #1-76 Florida de la sierra Barrio el Recreo
         </span>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco"
-          class="min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]"
-          style="border: 0"
-          title="Mapa de la ubicación del Baby Shower de Helena"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+          src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.652570827643!2d-73.09206275203006!3d7.064551265770049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e683f5dc1582361%3A0x30ed204861da073a!2sFlorida%20de%20la%20Sierra!5e0!3m2!1ses!2sco!4v1747920958622!5m2!1ses!2sco'
+          class='min-h-[150px] w-full flex-1 rounded-xl shadow-inner sm:min-h-[180px]'
+          style='border: 0'
+          title='Mapa de la ubicación del Baby Shower de Helena'
+          allowfullscreen=''
+          loading='lazy'
+          referrerpolicy='no-referrer-when-downgrade'></iframe>
       </div>
 
       <!-- Gift List - Third on mobile, original position on larger screens -->
       <div
-        class="order-4 flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/5 p-4 shadow-xl backdrop-blur-lg sm:order-2 sm:row-span-2 sm:row-start-2 sm:min-h-[350px] sm:p-6 lg:row-span-2 lg:row-start-2 lg:min-h-[400px]"
+        class='order-4 flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/5 p-4 shadow-xl backdrop-blur-lg sm:order-3 lg:order-2 sm:min-h-[350px] sm:p-6 lg:row-span-2 lg:row-start-2 lg:min-h-[400px]'
       >
         <h3
-          class="text-primary font-title mb-3 text-center text-[clamp(1.25rem,4.5vw,4rem)] font-[500] drop-shadow-md text-shadow-[0_0_2px_#000] sm:mb-4"
+          class='text-primary font-title mb-3 text-center text-[clamp(2.5rem,4.5vw,4rem)] font-[500] drop-shadow-md text-shadow-[0_0_2px_#000] sm:mb-4'
         >
           Lista de Regalos
         </h3>
         <p
-          class="font-body mb-3 text-center text-[clamp(0.875rem,2.8vw,1.5rem)] leading-relaxed font-[500] text-gray-800 drop-shadow-md sm:mb-4 lg:mb-6"
+          class='font-body mb-3 text-center text-[clamp(1.25rem,2.8vw,1.5rem)] leading-relaxed font-[500] text-gray-800 drop-shadow-md sm:mb-4 lg:mb-6'
         >
           Tu presencia es el regalo más especial que podríamos recibir. Si
           deseas obsequiar algo para nuestra pequeña Helena, hemos preparado una
           lista con mucho cariño.
         </p>
         <p
-          class="font-body mb-3 text-center text-[clamp(0.75rem,2.2vw,1.25rem)] text-gray-700 italic drop-shadow-md sm:mb-4 lg:mb-6"
+          class='font-body mb-3 text-center text-[clamp(1.125rem,2.2vw,1.25rem)] text-gray-700 italic drop-shadow-md sm:mb-4 lg:mb-6'
         >
           ¡Gracias por ser parte de este momento tan especial en nuestras vidas!
         </p>
         <button
-          id="openGiftListModal"
-          class="text-primary font-body animate-wiggle cursor-pointer rounded-lg bg-[#A9C1C3] px-4 py-2 text-[clamp(0.875rem,2.5vw,1rem)] font-semibold shadow-[0_0_2px_#000] transition-all duration-200 hover:scale-110 sm:px-6 sm:py-3"
+          id='openGiftListModal'
+          class='text-primary font-body animate-wiggle cursor-pointer rounded-lg bg-[#A9C1C3] px-4 py-2 text-[clamp(1.125rem,2.5vw,1rem)] font-semibold shadow-[0_0_2px_#000] transition-all duration-200 hover:scale-110 sm:px-6 sm:py-3'
         >
           ¡Quiero regalar algo!
         </button>
@@ -187,29 +187,32 @@ import ArticlesList from "../components/articles-list.astro";
       <ArticlesList />
 
       <div
-        class="order-5 flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-4 shadow-xl backdrop-blur-xl sm:order-3 sm:col-start-1 sm:row-span-2 sm:row-start-3 sm:min-h-[350px] sm:p-6 lg:col-start-3 lg:row-span-2 lg:row-start-2 lg:min-h-[400px]"
+        class='order-5 flex min-h-[300px] flex-col items-center justify-center rounded-xl border border-white/25 bg-white/15 p-4 shadow-xl backdrop-blur-xl sm:order-3 sm:col-start-1 sm:row-span-2 sm:row-start-3 sm:min-h-[350px] sm:p-6 lg:col-start-3 lg:row-span-2 lg:row-start-2 lg:min-h-[400px]'
       >
         <h3
-          class="text-primary font-title mb-3 text-center text-[clamp(1.25rem,4.5vw,4rem)] font-[500] drop-shadow-md text-shadow-[0_0_2px_#000] sm:mb-4"
+          class='text-primary font-title mb-3 text-center text-[clamp(2.5rem,4.5vw,4rem)] font-[500] drop-shadow-md text-shadow-[0_0_2px_#000] sm:mb-4'
         >
           Confirma tu Asistencia
         </h3>
         <p
-          class="font-body mb-3 text-center text-[clamp(0.875rem,2.8vw,1.5rem)] leading-relaxed font-[500] text-gray-800 drop-shadow-md sm:mb-4"
+          class='font-body mb-3 text-center text-[clamp(1.25rem,2.8vw,1.5rem)] leading-relaxed font-[500] text-gray-800 drop-shadow-md sm:mb-4'
         >
           ¡Tu presencia hará este momento aún más especial! Ayúdanos a preparar
           todo con amor confirmando si nos acompañarás.
         </p>
         <p
-          class="font-body mb-3 text-center text-[clamp(0.75rem,2.2vw,1.25rem)] text-gray-700 italic drop-shadow-md sm:mb-4 lg:mb-6"
+          class='font-body mb-3 text-center text-[clamp(1.125rem,2.2vw,1.25rem)] text-gray-700 italic drop-shadow-md sm:mb-4 lg:mb-6'
         >
           Cada sonrisa cuenta en la bienvenida de Helena
         </p>
-        <button
-          class="text-primary font-body cursor-pointer rounded-lg bg-[#A9C1C3] px-4 py-2 text-[clamp(0.875rem,2.5vw,1rem)] font-semibold shadow-[0_0_2px_#000] transition-all duration-200 hover:scale-110 sm:px-6 sm:py-3"
+        <a
+          href='https://wa.me/573044180496?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Helena.%20¡Estaré%20ahí%20para%20celebrar%20este%20momento%20tan%20especial!'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='text-primary font-body inline-block cursor-pointer rounded-lg bg-[#A9C1C3] px-4 py-2 text-center text-[clamp(1.125rem,2.5vw,1rem)] font-semibold shadow-[0_0_2px_#000] transition-all duration-200 hover:scale-110 sm:px-6 sm:py-3'
         >
           ¡Confirmo mi asistencia!
-        </button>
+        </a>
       </div>
     </div>
   </body>

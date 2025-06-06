@@ -5,7 +5,8 @@ import { supabase } from '../libs/supabase';
 const { data, error } = await supabase
   .from('articulos')
   .select('*')
-  .neq('totalDisponible', 0);
+  .neq('totalDisponible', 0)
+  .order('totalDisponible', { ascending: false });
 ---
 
 <!-- Modal -->
@@ -20,7 +21,7 @@ const { data, error } = await supabase
       class='flex items-center justify-between border-b border-[#5C7B28] p-6'
     >
       <h2
-        class='text-primary font-title text-[clamp(1rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
+        class='text-primary font-title text-[clamp(2rem,3vw,2.25rem)] drop-shadow-md text-shadow-[0_0_2px_#000]'
       >
         Lista de Regalos para Helena
       </h2>
@@ -55,14 +56,13 @@ const { data, error } = await supabase
           data?.map((item, index) => (
             <li>
               <div class='font-body flex items-center justify-between rounded-md border border-[#EEE6D2] px-2 py-1 text-lg text-gray-800'>
-                <span class='flex items-center gap-2'>
-                  {item.nombre}
-                </span>
+                <span class='flex items-center gap-2'>{item.nombre}</span>
                 <button
                   class='text-primary font-body choose-btn cursor-pointer rounded-lg bg-[#A9C1C3] px-2 py-1 text-[clamp(0.875rem,2.5vw,1rem)] font-semibold shadow-[0_0_2px_#000] transition-all duration-200 hover:scale-110'
-                  data-item-id={item.id || item.nombre}
-                  data-item-name={item.nombre}
+                  data-codigo={item.codigo}
+                  data-nombre={item.nombre}
                   data-available={item.totalDisponible}
+                  data-separated={item.totalApartado}
                   data-index={index}
                 >
                   Escoger!
@@ -121,7 +121,6 @@ const { data, error } = await supabase
       const closeModal = document.getElementById('closeGiftListModal');
       const modal = document.getElementById('giftListModal');
 
-      // Modal functionality
       openModal?.addEventListener('click', () => {
         modal?.classList.remove('hidden');
         modal?.classList.add('flex');
@@ -139,7 +138,6 @@ const { data, error } = await supabase
         }
       });
 
-      // Article selection functionality
       const chooseButtons = document.querySelectorAll('.choose-btn');
 
       chooseButtons.forEach(button => {
@@ -152,19 +150,16 @@ const { data, error } = await supabase
           const selectionRow = listItem.querySelector('.selection-row');
           selectionRow.classList.remove('hidden');
 
-          // Focus en el campo de nombre
           const nameInput = selectionRow.querySelector('.name-input');
           nameInput.focus();
         });
       });
 
-      // Cancel button functionality
       document.addEventListener('click', function (e) {
         if (e.target && e.target.classList.contains('cancel-btn')) {
           const selectionRow = e.target.closest('.selection-row');
           selectionRow.classList.add('hidden');
 
-          // Limpiar los campos
           const nameInput = selectionRow.querySelector('.name-input');
           const quantityInput = selectionRow.querySelector('.quantity-input');
           nameInput.value = '';
@@ -172,7 +167,6 @@ const { data, error } = await supabase
         }
       });
 
-      // Save button functionality
       document.addEventListener('click', async function (e) {
         if (e.target && e.target.classList.contains('save-btn')) {
           const button = e.target;
@@ -184,11 +178,11 @@ const { data, error } = await supabase
 
           const name = nameInput.value.trim();
           const quantity = parseInt(quantityInput.value);
-          const itemId = chooseBtn.dataset.itemId;
-          const itemName = chooseBtn.dataset.itemName;
+          const itemId = chooseBtn.dataset.codigo;
+          const itemName = chooseBtn.dataset.nombre;
           const available = parseInt(chooseBtn.dataset.available);
+          const separated = parseInt(chooseBtn.dataset.separated) || 0;
 
-          // Validaciones
           if (!name) {
             alert('Por favor, ingresa tu nombre');
             nameInput.focus();
@@ -207,21 +201,22 @@ const { data, error } = await supabase
             return;
           }
 
-          // Deshabilitar el botón para evitar doble envío
           button.disabled = true;
           button.textContent = 'Guardando...';
 
           try {
-            // Hacer la petición al endpoint que crearemos
             const response = await fetch('/api/update-article', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                itemId,
-                quantity,
-                name,
+                codigo: itemId,
+                totalDisponible: available - quantity,
+                totalApartado: separated + quantity,
+                nombreAparta: name,
+                nombreItem: itemName,
+                cantidad: quantity,
               }),
             });
 
@@ -231,38 +226,30 @@ const { data, error } = await supabase
               throw new Error(result.error || 'Error al procesar la solicitud');
             }
 
-            // Mostrar mensaje de éxito
             alert(
               `¡Perfecto! ${name} ha apartado ${quantity} unidad(es) de ${itemName}`
             );
 
-            // Ocultar la fila de selección
             selectionRow.classList.add('hidden');
 
-            // Limpiar los campos
             nameInput.value = '';
             quantityInput.value = '';
 
-            // Actualizar la información en pantalla
-            const availableSpan = listItem.querySelector('span span');
-            const newAvailable = result.newTotalDisponible;
-            availableSpan.textContent = `(${newAvailable} disponibles)`;
-
-            // Actualizar el dataset del botón
+            const newAvailable = result.updateData.totalDisponible;
             chooseBtn.dataset.available = newAvailable;
 
-            // Si no quedan disponibles, deshabilitar el botón
             if (newAvailable === 0) {
               chooseBtn.disabled = true;
               chooseBtn.textContent = 'Agotado';
               chooseBtn.classList.add('opacity-50', 'cursor-not-allowed');
               chooseBtn.classList.remove('hover:scale-110');
             }
+
+            window.location.reload();
           } catch (error) {
             console.error('Error al guardar:', error);
             alert('Hubo un error al guardar. Por favor, intenta de nuevo.');
           } finally {
-            // Rehabilitar el botón
             button.disabled = false;
             button.textContent = 'Guardar';
           }

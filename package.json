@@ -2,6 +2,7 @@
   "name": "babyshower",
   "version": "0.0.1",
   "dependencies": {
+    "@astrojs/netlify": "^6.3.4",
     "@fontsource-variable/nunito": "^5.2.5",
     "@fontsource/great-vibes": "^5.2.5",
     "@fontsource/sacramento": "^5.2.5",

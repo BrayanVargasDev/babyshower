@@ -2,19 +2,51 @@ import { supabase } from '../../libs/supabase';
 import type { APIRoute } from 'astro';
 
 export const POST: APIRoute = async ({ request }) => {
-  const { id, nuevosDatos } = await request.json();
+  const body = await request.json();
+  const { codigo, cantidad, nombreAparta, totalDisponible, totalApartado } =
+    body;
 
-  // Ejemplo: actualizar la tabla "articulos"
-  const { data, error } = await supabase
+  let { data: insertData, error: insertError } = await supabase
+    .from('apartados_por')
+    .insert({
+      cantidad,
+      aparta: nombreAparta,
+      id_articulo: codigo,
+    });
+
+  if (insertError) {
+    return new Response(
+      JSON.stringify({ ok: false, error: insertError.message }),
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const { data: updateData, error: updateError } = await supabase
     .from('articulos')
-    .update(nuevosDatos)
-    .eq('id', id)
+    .update({
+      totalDisponible,
+      totalApartado,
+    })
+    .eq('codigo', codigo)
     .select();
 
-  if (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 400,
-    });
+  if (updateError) {
+    return new Response(
+      JSON.stringify({ ok: false, error: updateError.message }),
+      {
+        status: 400,
+      }
+    );
   }
-  return new Response(JSON.stringify({ data }), { status: 200 });
+
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      insertData,
+      updateData,
+    }),
+    { status: 200 }
+  );
 };
